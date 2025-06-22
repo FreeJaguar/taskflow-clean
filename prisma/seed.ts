@@ -1,4 +1,4 @@
-import { PrismaClient, Role, TaskStatus, Priority } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
@@ -7,7 +7,7 @@ async function main() {
   console.log('🌱 Starting seed...')
 
   const hashedPassword = await bcrypt.hash('123456', 10)
-  
+
   const admin = await prisma.user.upsert({
     where: { email: 'admin@taskflow.com' },
     update: {},
@@ -15,7 +15,7 @@ async function main() {
       email: 'admin@taskflow.com',
       name: 'מנהל המערכת',
       password: hashedPassword,
-      role: Role.MANAGER,
+      role: 'MANAGER', // String instead of enum
     },
   })
 
@@ -28,7 +28,7 @@ async function main() {
       email: 'employee@taskflow.com',
       name: 'עובד לדוגמה',
       password: hashedPassword,
-      role: Role.EMPLOYEE,
+      role: 'EMPLOYEE', // String instead of enum
     },
   })
 
@@ -60,8 +60,8 @@ async function main() {
     {
       title: 'פיתוח מערכת אימות',
       description: 'יישום מערכת התחברות וניהול משתמשים עם NextAuth',
-      status: TaskStatus.IN_PROGRESS,
-      priority: Priority.HIGH,
+      status: 'IN_PROGRESS', // String instead of enum
+      priority: 'HIGH', // String instead of enum
       assigneeId: admin.id,
       workspaceId: adminWorkspace.id,
       tags: 'פיתוח,אבטחה,NextAuth',
@@ -71,8 +71,8 @@ async function main() {
     {
       title: 'עיצוב UI חדש',
       description: 'עדכון הממשק הגרפי לפי הדרישות החדשות',
-      status: TaskStatus.OPEN,
-      priority: Priority.MEDIUM,
+      status: 'OPEN',
+      priority: 'MEDIUM',
       assigneeId: employee.id,
       workspaceId: employeeWorkspace.id,
       tags: 'עיצוב,UI/UX',
@@ -82,24 +82,13 @@ async function main() {
     {
       title: 'בדיקות איכות',
       description: 'ביצוע בדיקות מקיפות למערכת',
-      status: TaskStatus.COMPLETED,
-      priority: Priority.HIGH,
+      status: 'COMPLETED',
+      priority: 'HIGH',
       assigneeId: employee.id,
       workspaceId: employeeWorkspace.id,
       tags: 'QA,בדיקות',
       startDate: new Date('2025-05-20'),
       endDate: new Date('2025-06-10'),
-    },
-    {
-      title: 'תיעוד טכני',
-      description: 'כתיבת תיעוד מפורט למערכת',
-      status: TaskStatus.PAUSED,
-      priority: Priority.LOW,
-      assigneeId: admin.id,
-      workspaceId: adminWorkspace.id,
-      tags: 'תיעוד',
-      startDate: new Date('2025-06-05'),
-      endDate: new Date('2025-06-30'),
     },
   ]
 
@@ -111,7 +100,6 @@ async function main() {
 
   console.log('✅ Created sample tasks')
   console.log('🎉 Seed completed successfully!')
-  
   console.log('\n📋 Login credentials:')
   console.log('Admin: admin@taskflow.com / 123456')
   console.log('Employee: employee@taskflow.com / 123456')
