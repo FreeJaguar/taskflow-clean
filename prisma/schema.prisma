@@ -12,7 +12,7 @@ model User {
   name      String
   email     String   @unique
   password  String
-  role      String   @default("EMPLOYEE") // Changed from enum to String
+  role      String   @default("EMPLOYEE")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
@@ -40,8 +40,8 @@ model Task {
   id          String    @id @default(cuid())
   title       String
   description String?
-  status      String    @default("OPEN") // Changed from enum to String
-  priority    String    @default("MEDIUM") // Changed from enum to String
+  status      String    @default("OPEN")
+  priority    String    @default("MEDIUM")
   startDate   DateTime?
   endDate     DateTime?
   tags        String?
