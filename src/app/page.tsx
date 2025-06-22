@@ -1,103 +1,106 @@
-import Image from "next/image";
+import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%)' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem', paddingTop: '4rem', paddingBottom: '4rem' }}>
+        <div style={{ textAlign: 'center' }}>
+          <h1 style={{ fontSize: '3.75rem', fontWeight: 'bold', color: '#111827', marginBottom: '1rem' }}>
+            TaskFlow
+          </h1>
+          <p style={{ fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem' }}>
+            מערכת ניהול משימות חכמה ומתקדמת
+          </p>
+          
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '4rem' }}>
+            <Link
+              href="/login"
+              style={{
+                padding: '0.75rem 2rem',
+                backgroundColor: '#2563eb',
+                color: 'white',
+                textDecoration: 'none',
+                borderRadius: '0.5rem',
+                fontSize: '1.125rem',
+                fontWeight: '500'
+              }}
+            >
+              התחברות
+            </Link>
+            <Link
+              href="/register"
+              style={{
+                padding: '0.75rem 2rem',
+                backgroundColor: 'white',
+                color: '#2563eb',
+                textDecoration: 'none',
+                border: '1px solid #2563eb',
+                borderRadius: '0.5rem',
+                fontSize: '1.125rem',
+                fontWeight: '500'
+              }}
+            >
+              הרשמה
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '4rem' }}>
+          <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '0.5rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', textAlign: 'center' }}>
+            <div style={{ 
+              width: '3rem', 
+              height: '3rem', 
+              backgroundColor: '#dbeafe', 
+              borderRadius: '0.5rem', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              margin: '0 auto 1rem',
+              fontSize: '1.5rem'
+            }}>
+              📋
+            </div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '0.5rem' }}>ניהול משימות</h3>
+            <p style={{ color: '#6b7280' }}>יצירה, עריכה ומעקב אחר משימות בצורה פשוטה ויעילה</p>
+          </div>
+          
+          <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '0.5rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', textAlign: 'center' }}>
+            <div style={{ 
+              width: '3rem', 
+              height: '3rem', 
+              backgroundColor: '#dcfce7', 
+              borderRadius: '0.5rem', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              margin: '0 auto 1rem',
+              fontSize: '1.5rem'
+            }}>
+              📊
+            </div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '0.5rem' }}>אנליטיקה</h3>
+            <p style={{ color: '#6b7280' }}>סטטיסטיקות מפורטות וניתוח ביצועים</p>
+          </div>
+          
+          <div style={{ backgroundColor: 'white', padding: '1.5rem', borderRadius: '0.5rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', textAlign: 'center' }}>
+            <div style={{ 
+              width: '3rem', 
+              height: '3rem', 
+              backgroundColor: '#fae8ff', 
+              borderRadius: '0.5rem', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              margin: '0 auto 1rem',
+              fontSize: '1.5rem'
+            }}>
+              👥
+            </div>
+            <h3 style={{ fontSize: '1.125rem', fontWeight: '600', marginBottom: '0.5rem' }}>שיתוף פעולה</h3>
+            <p style={{ color: '#6b7280' }}>עבודת צוות משותפת ויעילה</p>
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
